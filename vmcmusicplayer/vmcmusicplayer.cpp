@@ -181,11 +181,6 @@ RESULT eServiceVMCMusicPlayer::stop()
 	return 0;
 }
 
-RESULT eServiceVMCMusicPlayer::setTarget(int target)
-{
-	return -1;
-}
-
 RESULT eServiceVMCMusicPlayer::pause(ePtr<iPauseableService> &ptr)
 {
 	ptr=this;
