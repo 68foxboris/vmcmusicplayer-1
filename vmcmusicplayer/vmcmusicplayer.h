@@ -35,14 +35,14 @@ public:
 typedef struct _GstElement GstElement;
 
 class eServiceVMCMusicPlayer: public iPlayableService, public iPauseableService, 
-	public iServiceInformation, public iSeekableService, public Object
+	public iServiceInformation, public iSeekableService, public sigc::trackable
 {
 DECLARE_REF(eServiceVMCMusicPlayer);
 public:
 	virtual ~eServiceVMCMusicPlayer();
 
 		// iPlayableService
-	RESULT connectEvent(const Slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection);
+	RESULT connectEvent(const sigc::slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection);
 	RESULT start();
 	RESULT stop();
 	RESULT setTarget(int target, bool noaudio=false){return -1;}
@@ -89,7 +89,7 @@ private:
 	eServiceReference m_ref;
 	std::string m_filename;
 	eServiceVMCMusicPlayer(eServiceReference ref);	
-	Signal2<void,iPlayableService*,int> m_event;
+	sigc::signal2<void,iPlayableService*,int> m_event;
 	enum
 	{
 		stIdle, stRunning, stStopped,

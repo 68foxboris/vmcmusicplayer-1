@@ -150,7 +150,7 @@ eServiceVMCMusicPlayer::~eServiceVMCMusicPlayer()
 
 DEFINE_REF(eServiceVMCMusicPlayer);	
 
-RESULT eServiceVMCMusicPlayer::connectEvent(const Slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection)
+RESULT eServiceVMCMusicPlayer::connectEvent(const sigc::slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection)
 {
 	connection = new eConnection((iPlayableService*)this, m_event.connect(event));
 	return 0;
