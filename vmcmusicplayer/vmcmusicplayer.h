@@ -40,6 +40,7 @@ class eServiceVMCMusicPlayer: public iPlayableService, public iPauseableService,
 DECLARE_REF(eServiceVMCMusicPlayer);
 public:
 	virtual ~eServiceVMCMusicPlayer();
+	void setQpipMode(bool value, bool audio) { }
 
 		// iPlayableService
 	RESULT connectEvent(const sigc::slot2<void,iPlayableService*,int> &event, ePtr<eConnection> &connection);
